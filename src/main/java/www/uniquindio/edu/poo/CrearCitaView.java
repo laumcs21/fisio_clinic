@@ -29,8 +29,6 @@ public class CrearCitaView {
         fisioClinic = FisioClinic.getInstancia();
         this.usuarioLogueado = usuarioLogueado;
 
-        System.out.println("");
-
         tipoTerapiaComboBox = new ComboBox<>();
         tipoTerapiaComboBox.getItems().addAll(TipoTerapia.values());
         tipoTerapiaComboBox.setPromptText("Seleccione el tipo de terapia");
