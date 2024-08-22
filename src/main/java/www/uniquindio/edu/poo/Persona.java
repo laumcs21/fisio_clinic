@@ -11,6 +11,9 @@ public abstract class Persona {
     public String email;
     public LocalDate fechaNacimiento;
 
+
+    //constructor de persona
+
     public Persona(String nombre, String apellido, String identificacion, String numeroCelular, String email,
             LocalDate fechaNacimiento) {
 
