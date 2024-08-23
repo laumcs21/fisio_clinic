@@ -1,8 +1,10 @@
 package www.uniquindio.edu.poo;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.time.LocalDate;
@@ -52,10 +54,12 @@ public class App extends Application {
                  */
 
                 Button loginButton = new Button("Iniciar Sesión");
+                Label bienvenidaLabel = new Label("Bienvenido a FisioClinic");
 
                 loginButton.setOnAction(e -> mostrarPantallaLogin(primaryStage));
 
-                VBox root = new VBox(10, loginButton);
+               VBox root = new VBox(20, bienvenidaLabel, loginButton);
+                root.setAlignment(Pos.CENTER);
                 Scene scene = new Scene(root, 300, 200);
 
                 primaryStage.setScene(scene);
