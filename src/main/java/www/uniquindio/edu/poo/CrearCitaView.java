@@ -85,6 +85,13 @@ public class CrearCitaView {
         Button crearCitaButton = new Button("Agendar");
         crearCitaButton.setOnAction(e -> {
             mensajeLabel.setVisible(false);
+
+            if (usuarioLogueado == null) {
+                mensajeLabel.setText("Usuario no encontrado");
+                mensajeLabel.setVisible(true);
+                return;
+            }
+
             if (tipoTerapiaComboBox.getValue() == null) {
                 mensajeLabel.setText("Por favor seleccione un tipo de terapia.");
                 mensajeLabel.setVisible(true);
@@ -113,7 +120,7 @@ public class CrearCitaView {
                         horaComboBox.getValue(), doctorTipoComboBox.getValue());
                 fisioClinic.getCitaCRUD().crear(cita);
                 mensajeLabel.setVisible(true);
-                mensajeLabel.setText("Cita creada con éxito. Código de la cita: " + cita.getCodigo() + cita.getUsuario());
+                mensajeLabel.setText("Cita creada con éxito. Código de la cita: " + cita.getCodigo());
             } catch (Exception ex) {
                 mensajeLabel.setText("El horario de la cita no está disponible");
                 mensajeLabel.setVisible(true);

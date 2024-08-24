@@ -1,6 +1,5 @@
 package www.uniquindio.edu.poo;
 
-import java.util.function.Predicate;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,7 +13,7 @@ public class InicioSesionView {
 
     private FisioClinic fisioClinic;
     private Label mensajeLabel;
-    private Usuario usuarioLogueado;
+    private Usuario usuarioLogueado;  // Variable para guardar el usuario logueado
 
     public InicioSesionView(Stage secondStage) {
 
@@ -23,29 +22,28 @@ public class InicioSesionView {
         TextField identificacionField = new TextField();
         identificacionField.setPromptText("Identificación");
 
-        TextField contraseñaField = new PasswordField();
+        PasswordField contraseñaField = new PasswordField();
         contraseñaField.setPromptText("Contraseña");
 
         mensajeLabel = new Label();
 
-        Button IniciarButton = new Button("Iniciar Sesión");
-        IniciarButton.setOnAction(e -> {
+        Button iniciarButton = new Button("Iniciar Sesión");
+        iniciarButton.setOnAction(e -> {
             mensajeLabel.setVisible(false);
-            boolean usuarioEncontrado = buscarUsuarioPorIdentificacionContraseña(identificacionField.getText(),
-                    contraseñaField.getText());
-            if (usuarioEncontrado) {
+            Usuario usuario = obtenerUsuarioLogueado(identificacionField.getText(), contraseñaField.getText());
+            if (usuario != null) {
                 mensajeLabel.setText("Inicio de sesión exitoso");
                 mensajeLabel.setVisible(true);
 
                 // Mostrar pantalla de usuario después de iniciar sesión exitoso
-                mostrarPantallaUsuario(secondStage, usuarioLogueado);
+                mostrarPantallaUsuario(secondStage, usuario);
             } else {
                 mensajeLabel.setText("Número de Identificación o contraseña incorrecta");
                 mensajeLabel.setVisible(true);
             }
         });
 
-        VBox root = new VBox(10, identificacionField, contraseñaField, IniciarButton, mensajeLabel);
+        VBox root = new VBox(10, identificacionField, contraseñaField, iniciarButton, mensajeLabel);
         root.setPadding(new Insets(20));
 
         Scene scene = new Scene(root, 400, 300);
@@ -54,28 +52,19 @@ public class InicioSesionView {
 
     }
 
-    public boolean buscarUsuarioPorIdentificacionContraseña(String identificacion, String contraseña) {
-        Predicate<Usuario> condicion = usuario -> usuario.getIdentificacion().equals(identificacion)
-                && usuario.getContraseña().equals(contraseña);
-        return fisioClinic.getUsuarios().stream().anyMatch(condicion);
-
-    }
-
-    private void manejarInicioSesion(Stage stage, String identificacion, String contraseña) {
-        boolean usuarioEncontrado = buscarUsuarioPorIdentificacionContraseña(identificacion, contraseña);
-        if (usuarioEncontrado) {
-            usuarioLogueado = fisioClinic.getUsuarios().stream()
-                    .filter(u -> u.getIdentificacion().equals(identificacion))
-                    .findFirst().orElse(null);
-            mostrarPantallaUsuario(stage, usuarioLogueado);
-        } else {
-            mensajeLabel.setText("Número de Identificación o contraseña incorrecta");
-            mensajeLabel.setVisible(true);
-        }
+    private Usuario obtenerUsuarioLogueado(String identificacion, String contraseña) {
+        usuarioLogueado = fisioClinic.getUsuarios().stream()
+                .filter(usuario -> usuario.getIdentificacion().equals(identificacion)
+                        && usuario.getContraseña().equals(contraseña))
+                .findFirst().orElse(null);
+        return usuarioLogueado;
     }
 
     private void mostrarPantallaUsuario(Stage stage, Usuario usuarioLogueado) {
         new UsuarioView(stage, usuarioLogueado);
     }
 
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
 }

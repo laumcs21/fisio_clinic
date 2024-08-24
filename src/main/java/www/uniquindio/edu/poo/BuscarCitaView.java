@@ -31,6 +31,7 @@ public class BuscarCitaView {
                 mensajeLabel.setVisible(true);
                 mensajeLabel.setText("Cita encontrada:\n" +
                 "Código: " + cita.getCodigo() + "\n" +
+                "Identificación: " + cita.getUsuario().getIdentificacion() + "\n" +
                 "Fecha: " + cita.getFechaCita() + "\n" +
                 "Hora: " + cita.getHoraCita() + "\n" +
                 "Doctor: " + cita.getDoctor().getNombre());

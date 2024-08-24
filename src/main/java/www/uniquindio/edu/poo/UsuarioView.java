@@ -11,10 +11,13 @@ public class UsuarioView {
 
     private FisioClinic fisioClinic;
     private Label mensajeLabel;
+    public Usuario usuarioLogueado;
 
     public UsuarioView(Stage thirdStage, Usuario usuarioLogueado) {
 
         fisioClinic = FisioClinic.getInstancia();
+        this.usuarioLogueado = usuarioLogueado;
+
 
         // Inicializamos el mensajeLabel
         mensajeLabel = new Label("Seleccione una opción para gestionar sus citas:");
