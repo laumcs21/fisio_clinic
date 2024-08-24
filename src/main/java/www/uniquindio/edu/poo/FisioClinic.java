@@ -1,6 +1,11 @@
 package www.uniquindio.edu.poo;
 
 import java.util.Collection;
+
+import www.uniquindio.edu.poo.Crud.CitaCRUD;
+import www.uniquindio.edu.poo.Crud.DoctorCRUD;
+import www.uniquindio.edu.poo.Crud.UsuarioCRUD;
+
 import java.util.ArrayList;
 
 public class FisioClinic {

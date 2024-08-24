@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "www.uniquindio.edu.poo/www.uniquindio.edu.poo.Interfaz.App",
+            "projectName": "fisio_clinic"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

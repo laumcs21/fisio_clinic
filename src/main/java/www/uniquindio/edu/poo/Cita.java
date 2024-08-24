@@ -2,6 +2,10 @@ package www.uniquindio.edu.poo;
 
 import java.time.LocalDate;
 
+import www.uniquindio.edu.poo.Contador;
+import www.uniquindio.edu.poo.Enums.HorasDisponibles;
+import www.uniquindio.edu.poo.Enums.TipoTerapia;
+
 public class Cita {
 
     private Usuario usuario;

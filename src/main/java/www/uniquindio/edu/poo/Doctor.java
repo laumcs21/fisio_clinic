@@ -2,6 +2,9 @@ package www.uniquindio.edu.poo;
 
 import java.time.LocalDate;
 
+import www.uniquindio.edu.poo.Abstracciones.Persona;
+import www.uniquindio.edu.poo.Enums.TipoTerapia;
+
 public class Doctor extends Persona {
 
     public TipoTerapia tipoTerapia;

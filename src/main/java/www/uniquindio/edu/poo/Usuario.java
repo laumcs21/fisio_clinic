@@ -2,6 +2,8 @@ package www.uniquindio.edu.poo;
 
 import java.time.LocalDate;
 
+import www.uniquindio.edu.poo.Abstracciones.Persona;
+
 public class Usuario extends Persona {
 
     private String contrasena;
