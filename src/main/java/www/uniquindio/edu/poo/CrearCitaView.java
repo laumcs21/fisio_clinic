@@ -113,7 +113,7 @@ public class CrearCitaView {
                         horaComboBox.getValue(), doctorTipoComboBox.getValue());
                 fisioClinic.getCitaCRUD().crear(cita);
                 mensajeLabel.setVisible(true);
-                mensajeLabel.setText("Cita creada con éxito. Código de la cita: " + cita.getCodigo());
+                mensajeLabel.setText("Cita creada con éxito. Código de la cita: " + cita.getCodigo() + cita.getUsuario());
             } catch (Exception ex) {
                 mensajeLabel.setText("El horario de la cita no está disponible");
                 mensajeLabel.setVisible(true);

@@ -29,7 +29,7 @@ public class UsuarioView {
         actualizarCitaButton.setOnAction(e -> mostrarPantallaActualizar(thirdStage));
 
         Button buscarCitaButton = new Button("Buscar Cita");
-        buscarCitaButton.setOnAction(e -> mostrarPantallaBuscar(thirdStage));
+        buscarCitaButton.setOnAction(e -> mostrarPantallaBuscar(thirdStage, usuarioLogueado));
 
         Button volverButton = new Button("Volver");
         volverButton.setOnAction(e -> mostrarPantallaInicio(thirdStage));
@@ -56,8 +56,8 @@ public class UsuarioView {
         new ActualizarCitaView(stage);
     }
 
-    private void mostrarPantallaBuscar(Stage stage) {
-        new BuscarCitaView(stage);
+    private void mostrarPantallaBuscar(Stage stage, Usuario usuarioLogueado) {
+        new BuscarCitaView(stage, usuarioLogueado);
     }
 
     private void mostrarPantallaInicio(Stage stage) {

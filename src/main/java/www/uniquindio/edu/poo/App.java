@@ -37,21 +37,21 @@ public class App extends Application {
                 fisioClinic.getDoctorCRUD().crear(doctor1);
                 fisioClinic.getDoctorCRUD().crear(doctor2);
 
-                /*
-                 * Cita cita1 = new Cita(usuario1, TipoTerapia.FISIOTERAPIA, LocalDate.of(2024,
-                 * 9, 18),
-                 * HorasDisponibles.HORA_17, doctor2);
-                 * fisioClinic.getCitaCRUD().crear(cita1);
-                 * Cita cita2 = new Cita(usuario2, TipoTerapia.HIDROTERAPIA, LocalDate.of(2024,
-                 * 9, 18),
-                 * HorasDisponibles.HORA_17, doctor1);
-                 * fisioClinic.getCitaCRUD().crear(cita2);
-                 * 
-                 * System.out.println(fisioClinic.getCitas().size());
-                 * fisioClinic.getCitaCRUD().eliminar(cita1.getCodigo());
-                 * System.out.println(fisioClinic.getCitas().size());
-                 * fisioClinic.getCitaCRUD().leer(cita2.getCodigo());
-                 */
+                
+                Cita cita1 = new Cita(usuario1, TipoTerapia.FISIOTERAPIA, LocalDate.of(2024,
+                9, 18),
+                HorasDisponibles.HORA_17, doctor2);
+                fisioClinic.getCitaCRUD().crear(cita1);
+                Cita cita2 = new Cita(usuario2, TipoTerapia.HIDROTERAPIA, LocalDate.of(2024,
+                9, 18),
+                HorasDisponibles.HORA_17, doctor1);
+                fisioClinic.getCitaCRUD().crear(cita2);
+                
+                System.out.println(fisioClinic.getCitas().size());
+                fisioClinic.getCitaCRUD().eliminar(cita1.getCodigo());
+                System.out.println(fisioClinic.getCitas().size());
+                fisioClinic.getCitaCRUD().leer(cita2.getCodigo());
+        
 
                 Button loginButton = new Button("Iniciar Sesión");
                 Label bienvenidaLabel = new Label("Bienvenido a FisioClinic");
