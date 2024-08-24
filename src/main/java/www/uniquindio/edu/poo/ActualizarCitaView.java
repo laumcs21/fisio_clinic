@@ -25,7 +25,6 @@ public class ActualizarCitaView {
     private Cita citaEncontrada;
 
     public ActualizarCitaView(Stage seventhStage) {
-
         fisioClinic = FisioClinic.getInstancia();
         this.usuarioLogueado = usuarioLogueado;
 
@@ -53,6 +52,7 @@ public class ActualizarCitaView {
 
         horaComboBox = new ComboBox<>();
         horaComboBox.setPromptText("Seleccione la hora");
+        horaComboBox.getItems().addAll(HorasDisponibles.values()); 
 
         doctorTipoComboBox = new ComboBox<>();
         doctorTipoComboBox.setPromptText("Seleccione el doctor");
@@ -118,6 +118,8 @@ public class ActualizarCitaView {
         tipoTerapiaComboBox.setValue(cita.getTipoTerapia());
         fechaCitaDatePicker.setValue(cita.getFechaCita());
         horaComboBox.setValue(cita.getHoraCita());
+        horaComboBox.getItems().clear();
+        horaComboBox.getItems().addAll(HorasDisponibles.values()); 
         doctorTipoComboBox.getItems().clear();
         doctorTipoComboBox.getItems().addAll(buscarDoctorPorTerapia(cita.getTipoTerapia()));
         doctorTipoComboBox.setValue(cita.getDoctor());
@@ -154,6 +156,12 @@ public class ActualizarCitaView {
     private void actualizarCita() {
         if (citaEncontrada != null) {
             try {
+                // valores
+                System.out.println("Fecha Seleccionada: " + fechaCitaDatePicker.getValue());
+                System.out.println("Hora Seleccionada: " + horaComboBox.getValue());
+                System.out.println("Doctor Seleccionado: " + doctorTipoComboBox.getValue().getNombre());
+
+                //actualizar
                 citaEncontrada.setTipoTerapia(tipoTerapiaComboBox.getValue());
                 citaEncontrada.setFechaCita(fechaCitaDatePicker.getValue());
                 citaEncontrada.setHoraCita(horaComboBox.getValue());
@@ -164,6 +172,7 @@ public class ActualizarCitaView {
                 mensajeLabel.setText("Cita actualizada con éxito.");
                 mensajeLabel.setVisible(true);
             } catch (Exception ex) {
+                ex.printStackTrace();  
                 mensajeLabel.setText("Error al actualizar la cita.");
                 mensajeLabel.setVisible(true);
             }

@@ -80,4 +80,6 @@ public class FisioClinic {
     public void setCitaCRUD(CitaCRUD citaCRUD) {
         this.citaCRUD = citaCRUD;
     }
+
+    
 }
